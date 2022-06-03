@@ -1,0 +1,13 @@
+query LaunchList($limit: Int, $offset: Int) {
+  launchesPast(limit: $limit, offset: $offset) {
+    id
+    links {
+      mission_patch_small
+    }
+    mission_name
+    rocket {
+      rocket_name
+    }
+    launch_date_local
+  }
+}
