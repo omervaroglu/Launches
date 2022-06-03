@@ -6,35 +6,20 @@
 //
 
 import Foundation
-import Foundation
-import Kingfisher
+import UIKit
 
-func setImg(image: UIImageView?, imgLink: String) -> (){
-    let url = URL(string: imgLink)
+extension UITableView {
+    func register(with commonId: String) {
+        register(UINib(nibName: commonId, bundle: nil), forCellReuseIdentifier: commonId)
+    }
     
-    image!.kf.indicatorType = .activity
-    image!.kf.setImage(
-        with: url,
-        options: [
-            .scaleFactor(UIScreen.main.scale),
-            .transition(.fade(1)),
-            .cacheOriginalImage
-        ])
-}
-func setImgWithCompletion(image: UIImageView?, imgLink: String, success: @escaping (_ isEmpty: Bool? )->()) -> (){
-    //    let url = URL(string: imgLink)
-    let url : String = imgLink
-    let urlStr : String = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-    let convertedURL : URL = URL(string: urlStr)!
-    print(convertedURL)
+    func registerCells(_ cells: [UITableViewCell.Type]) {
+        for cell in cells {
+            register(nibFromClass(cell), forCellReuseIdentifier: cell.nameOfClass)
+        }
+    }
     
-    image!.kf.indicatorType = .activity
-    image!.kf.setImage(
-        with: convertedURL,
-        placeholder: nil,
-        options: [
-            .scaleFactor(UIScreen.main.scale),
-            .transition(.fade(1)),
-            .cacheOriginalImage
-        ])
+    fileprivate func nibFromClass(_ type: UIView.Type) -> UINib {
+        return UINib(nibName: type.nameOfClass, bundle: nil)
+    }
 }

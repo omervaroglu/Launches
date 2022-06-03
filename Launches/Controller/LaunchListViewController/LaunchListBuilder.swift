@@ -6,3 +6,15 @@
 //
 
 import Foundation
+import UIKit
+
+class LaunchListBuilder {
+    
+    static func make() -> LaunchListViewController {
+        let storyboard = UIStoryboard(name: "LaunchList", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "LaunchListViewController") as! LaunchListViewController
+        viewController.viewModel = LaunchListViewModel()
+        return viewController
+    }
+    
+}

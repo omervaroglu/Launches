@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+extension NSObject {
+    class var nameOfClass: String {
+        return String(describing: self)
+    }
+}

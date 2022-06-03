@@ -15,6 +15,7 @@ func setImg(image: UIImageView?, imgLink: String) -> (){
     image!.kf.indicatorType = .activity
     image!.kf.setImage(
         with: url,
+        placeholder: UIImage(named: "starship"),
         options: [
             .scaleFactor(UIScreen.main.scale),
             .transition(.fade(1)),

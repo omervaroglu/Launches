@@ -9,15 +9,19 @@ import UIKit
 
 class LaunchTableViewCell: UITableViewCell {
 
+    @IBOutlet private weak var launchImageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var secondaryLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    public func setUI(image: String?, launchName: String?, rocketName: String?) {
+        self.titleLabel.text = launchName ?? ""
+        self.secondaryLabel.text = rocketName
+        setImg(image: self.launchImageView, imgLink: image ?? "")
     }
-    
 }
